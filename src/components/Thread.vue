@@ -13,7 +13,7 @@ export default {
     <Suspense>
         <ThreadView/>
         <template  #fallback>
-            Loading...
+            <v-progress-circular indeterminate/>
         </template>
     </Suspense>
 </template>

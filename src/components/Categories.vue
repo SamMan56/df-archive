@@ -13,7 +13,7 @@ export default {
     <Suspense>
         <CategoriesView/>
         <template  #fallback>
-            Loading...
+            <v-progress-circular indeterminate/>
         </template>
     </Suspense>
 </template>
