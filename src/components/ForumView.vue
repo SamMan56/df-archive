@@ -7,27 +7,31 @@ const threads_raw: [{
     category_id: string,
     thread_subject: string,
     thread_views: string,
-    thread_status: string
+    thread_status: string,
+    post_user_id: string,
+    post_username: string,
+    post_time: string,
 }] = await res.json();
 const threads = threads_raw.map(thread_raw => {
+    const date = new Date(parseInt(thread_raw.post_time) * 1000);
+
     return {
+        id: thread_raw.thread_id,
         name: thread_raw.thread_subject,
-        url: `#/thread/${thread_raw.thread_id}`
+        author: thread_raw.post_username || thread_raw.post_user_id,
+        url: `#/thread/${thread_raw.thread_id}`,
+        date: `${date?.toLocaleTimeString()} ${date?.toLocaleDateString()}`
     }
 })
 </script>
 
 <template>
-    <div class="subforums">
-        <div v-for="thread in threads">
-            <a :href="thread.url">{{ thread.name }}</a>
-        </div>
-    </div>
+    <v-card>
+        <v-list lines="two">
+            <v-list-item v-for="thread in threads" :key="thread.id" :value="thread.url">
+                <v-list-item-title><a :href="thread.url">{{ thread.name }}</a></v-list-item-title>
+                <v-list-item-subtitle>{{ thread.author }}<br>{{ thread.date }}</v-list-item-subtitle>
+            </v-list-item>
+        </v-list>
+    </v-card>
 </template>
-
-<style scoped>
-    .subforums {
-        display: flex;
-        flex-direction: column;
-    }
-</style>
