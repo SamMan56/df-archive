@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ThreadItem from './ThreadItem.vue';
+
 const thread_id = window.location.hash.slice(2).split("/")[1]
 const res = await fetch(`https://2qlpwthhodrxe6mhp2w4xkhvfy0onjll.lambda-url.eu-west-2.on.aws/?thread_id=${thread_id}`);
 const posts_raw: [{
@@ -13,23 +15,21 @@ const posts = posts_raw.map(post_raw => {
     return {
         author: post_raw.post_username || post_raw.post_user_id,
         content: post_raw.post_content,
-        timestamp: parseInt(post_raw.post_time)
+        date: new Date(parseInt(post_raw.post_time) * 1000)
     }
-}).sort((a, b) => a.timestamp - b.timestamp);
+}).sort((a, b) => a.date.valueOf() - b.date.valueOf());
 </script>
 
 <template>
-    <div class="post">
-        <div v-for="post in posts">
-            <h2>{{ post.author }}</h2>
-            <p>{{ post.content }}</p>
-        </div>
+    <div class="thread">
+        <ThreadItem v-for="post in posts" :author=post.author :content=post.content :date=post.date />
     </div>
 </template>
 
 <style scoped>
-    .post {
+    .thread {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
     }
 </style>
