@@ -1,15 +1,22 @@
 <script lang="ts">
+import ForumTitle from './ForumTitle.vue';
 import ForumView from './ForumView.vue';
 
 export default {
     components: {
-        ForumView: ForumView
-    }
+    ForumView: ForumView,
+    ForumTitle
+}
 }
 </script>
 
 <template>
-    <h1>Forum</h1>
+    <Suspense>
+        <ForumTitle/>
+        <template  #fallback>
+            <div></div>
+        </template>
+    </Suspense>
     <Suspense>
         <ForumView/>
         <template  #fallback>

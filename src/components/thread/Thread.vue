@@ -13,6 +13,9 @@ export default {
 <template>
     <Suspense>
         <ThreadTitle/>
+        <template  #fallback>
+            <div></div>
+        </template>
     </Suspense>
     <Suspense>
         <ThreadView/>

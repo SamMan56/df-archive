@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ForumThread } from '../../types';
+import { Thread } from '../../types';
 
 const forum_id = window.location.hash.slice(2).split("/")[1]
 const res = await fetch(`https://yc7lkh7t2ut54rchjbwzvpfrg40ekowv.lambda-url.eu-west-2.on.aws/?forum_id=${forum_id}`);
-const threads_raw: [ForumThread] = await res.json();
+const threads_raw: [Thread] = await res.json();
 const threads = threads_raw.map(thread_raw => {
     const date = new Date(parseInt(thread_raw.post_time) * 1000);
 

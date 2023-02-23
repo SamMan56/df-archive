@@ -1,4 +1,4 @@
-export type ForumThread = {
+export type Thread = {
     thread_id: number,
     forum_id: string,
     category_id: string,
@@ -8,4 +8,11 @@ export type ForumThread = {
     post_user_id: string,
     post_username: string,
     post_time: string,
+}
+
+export type Forum = {
+    forum_id: number,
+    category_id: number,
+    forum_name: string,
+    forum_description: string
 }
