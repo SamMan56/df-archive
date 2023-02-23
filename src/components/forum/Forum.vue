@@ -4,9 +4,14 @@ import ForumView from './ForumView.vue';
 
 export default {
     components: {
-    ForumView: ForumView,
-    ForumTitle
-}
+        ForumView,
+        ForumTitle
+    },
+
+    mounted() {
+        // replaced by forum title in suspense
+        document.title = "Loading Forum..."
+    }
 }
 </script>
 

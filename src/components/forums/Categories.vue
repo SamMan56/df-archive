@@ -4,6 +4,10 @@ import CategoriesView from './CategoriesView.vue';
 export default {
     components: {
         CategoriesView
+    },
+
+    mounted() {
+        document.title = "Forums"
     }
 }
 </script>

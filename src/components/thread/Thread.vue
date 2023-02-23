@@ -4,9 +4,14 @@ import ThreadView from './ThreadView.vue';
 
 export default {
     components: {
-    ThreadView,
-    ThreadTitle
-}
+        ThreadView,
+        ThreadTitle
+    },
+
+    mounted() {
+        // replaced by thread title in suspense
+        document.title = "Loading Thread..."
+    }
 }
 </script>
 

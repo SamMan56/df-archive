@@ -1,9 +1,9 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
+<script lang="ts">
+export default {
+  mounted() {
+    document.title = "DiamondFire Archive"
+  }
+}
 </script>
 
 <template>

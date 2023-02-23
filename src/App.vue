@@ -19,7 +19,6 @@ export default {
   },
   computed: {
     currentView() {
-      document.title = `Archived ${this.currentPath[0]}`;
       return routes[this.currentPath[0]];
     }
   },
