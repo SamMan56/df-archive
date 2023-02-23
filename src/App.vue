@@ -1,9 +1,9 @@
 <script lang="ts">
-import Categories from './components/Categories.vue';
-import Home from './components/Home.vue';
-import Category from './components/Category.vue';
-import Forum from './components/Forum.vue';
-import Thread from './components/Thread.vue';
+import Categories from './components/home/Categories.vue';
+import Home from './components/home/Home.vue';
+import Category from './components/home/Category.vue';
+import Forum from './components/forum/Forum.vue';
+import Thread from './components/thread/Thread.vue';
 
 const routes: { [key: string]: any } = {
   "": Home,
