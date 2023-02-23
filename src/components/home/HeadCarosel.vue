@@ -7,43 +7,65 @@ type Head = {
     username: string
 }
 
-function generateHead(x: number): Head {
-    var username = USERNAMES[Math.floor(Math.random()*USERNAMES.length)];
-
-    return { x: x, username: username };
-}
-
 export default {
     data() {
         return {
             heads: [{ x: 0, username: "" }],
             heads2: [{ x: 0, username: "" }],
             headCount: 0,
-            animationRef: -1
+            animationRef: -1,
+            usernames: [""]
         };
     },
     methods: {
         tick() {
             const currentCount = Math.floor(window.innerWidth / 128);
             if (this.headCount != currentCount) {
-                this.heads = [...Array(currentCount).keys()].map(i => generateHead(i / currentCount));
-                this.heads2 = [...Array(currentCount).keys()].map(i => generateHead(i / currentCount));
+                this.usernames = [];
+                this.heads = [...Array(currentCount).keys()].map(i => this.generateHead(i / currentCount));
+                this.heads2 = [...Array(currentCount).keys()].map(i => this.generateHead(i / currentCount));
                 this.headCount = currentCount;
             }
             this.heads = this.heads
-                .filter(head => head.x > 0)
+                .filter(head => {
+                    if (head.x < 0) {
+                        this.usernames = this.usernames.filter(username => username !== head.username);
+                        return false;
+                    }
+
+                    return true;
+                })
                 .map(head => { return { ...head, x: head.x - 0.0005 }; });
             if (this.heads.length < this.headCount) {
-                this.heads.push(generateHead(1));
+                this.heads.push(this.generateHead(1));
             }
 
             this.heads2 = this.heads2
-                .filter(head => head.x > 0)
+                .filter(head => {
+                    if (head.x < 0) {
+                        this.usernames = this.usernames.filter(username => username !== head.username);
+                        return false;
+                    }
+
+                    return true;
+                })
                 .map(head => { return { ...head, x: head.x - 0.0005 }; });
             if (this.heads2.length < this.headCount) {
-                this.heads2.push(generateHead(1));
+                this.heads2.push(this.generateHead(1));
             }
             this.animationRef = requestAnimationFrame(this.tick);
+        },
+
+        generateHead(x: number): Head {
+            var username = USERNAMES[Math.floor(Math.random()*USERNAMES.length)];
+
+            if (this.usernames.includes(username)) {
+                username = USERNAMES[Math.floor(Math.random()*USERNAMES.length)];
+            }
+
+            this.usernames.push(username);
+
+            return { x: x, username: username };
         }
     },
     mounted() {
@@ -61,6 +83,8 @@ export default {
     <div class="carosel carosel1">
         <Head v-for="head in heads" :username="head.username" :x="head.x"/>
     </div>
+
+    {{ usernames }}
 
     <div class="carosel carosel2">
         <Head v-for="head in heads2" :username="head.username" :x="head.x"/>
