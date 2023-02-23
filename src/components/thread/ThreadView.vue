@@ -16,7 +16,7 @@ const posts_raw: [{
 const posts = posts_raw.map(post_raw => {
     return {
         author: post_raw.post_username || post_raw.post_user_id,
-        content: (bbobHTML as any)(post_raw.post_content, (preset as any)()),
+        content: bbobHTML(post_raw.post_content, preset()),
         date: new Date(parseInt(post_raw.post_time) * 1000)
     }
 }).sort((a, b) => a.date.valueOf() - b.date.valueOf());
