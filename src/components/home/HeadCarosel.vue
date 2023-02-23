@@ -84,8 +84,6 @@ export default {
         <Head v-for="head in heads" :username="head.username" :x="head.x"/>
     </div>
 
-    {{ usernames }}
-
     <div class="carosel carosel2">
         <Head v-for="head in heads2" :username="head.username" :x="head.x"/>
     </div>
