@@ -21,18 +21,15 @@ const threads = threads_raw.map(thread_raw => {
         author: thread_raw.post_username || thread_raw.post_user_id,
         url: `#/thread/${thread_raw.thread_id}`,
         date_string: `${date?.toLocaleTimeString()} ${date?.toLocaleDateString()}`,
-        date: date
+        date: date,
+        views: thread_raw.thread_views
     }
 }).sort((a, b) => b.date.valueOf() - a.date.valueOf())
 </script>
 
 <template>
-    <v-card>
-        <v-list lines="two">
-            <v-list-item v-for="thread in threads" :key="thread.id" :value="thread.url">
-                <v-list-item-title><a :href="thread.url">{{ thread.name }}</a></v-list-item-title>
-                <v-list-item-subtitle>{{ thread.author }}<br>{{ thread.date_string }}</v-list-item-subtitle>
-            </v-list-item>
-        </v-list>
+    <v-card class="mb-2 pb-4 text-left" v-for="thread in threads">
+        <v-card-title><a :href="thread.url">{{ thread.name }}</a></v-card-title>
+        <v-card-subtitle>{{ thread.author }}<br>{{ thread.date_string }}<br>{{ thread.views }} Views</v-card-subtitle>
     </v-card>
 </template>
