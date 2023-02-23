@@ -1,15 +1,19 @@
 <script lang="ts">
+import ThreadTitle from './ThreadTitle.vue';
 import ThreadView from './ThreadView.vue';
 
 export default {
     components: {
-        ThreadView: ThreadView
-    }
+    ThreadView,
+    ThreadTitle
+}
 }
 </script>
 
 <template>
-    <h1>Thread</h1>
+    <Suspense>
+        <ThreadTitle/>
+    </Suspense>
     <Suspense>
         <ThreadView/>
         <template  #fallback>
