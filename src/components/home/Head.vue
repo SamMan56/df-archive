@@ -54,7 +54,6 @@ export default {
 
 <style scoped>
 .head {
-    background-color: red;
     position: absolute;
 }
 </style>
