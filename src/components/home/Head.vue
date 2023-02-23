@@ -42,7 +42,7 @@ export default {
         style() {
             const size = `${(100 / 128) * 128 * (this.scale || 1)}px`
 
-            return { width: size, height: size, opacity: this.opacity * 0.75, left: `calc(${100 * (this.x || 0)}vw - 50px)` }
+            return { width: size, height: size, opacity: this.opacity * 0.25, left: `calc(${100 * (this.x || 0)}vw - 50px)` }
         }
     }
 }
