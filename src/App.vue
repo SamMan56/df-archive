@@ -31,8 +31,9 @@ export default {
 </script>
 
 <template>
-  <a href="#/">Home</a> |
-  <a href="#/forums">Forums</a>
+  <div v-if="currentPath[0] !== ''">
+    <a href="#/">Home</a> |
+    <a href="#/forums">Forums</a>
+  </div>
   <component :is="currentView" />
-  <p>{{ currentPath }}</p>
 </template>
