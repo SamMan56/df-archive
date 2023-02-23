@@ -20,9 +20,10 @@ const threads = threads_raw.map(thread_raw => {
         name: thread_raw.thread_subject,
         author: thread_raw.post_username || thread_raw.post_user_id,
         url: `#/thread/${thread_raw.thread_id}`,
-        date: `${date?.toLocaleTimeString()} ${date?.toLocaleDateString()}`
+        date_string: `${date?.toLocaleTimeString()} ${date?.toLocaleDateString()}`,
+        date: date
     }
-})
+}).sort((a, b) => b.date.valueOf() - a.date.valueOf())
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const threads = threads_raw.map(thread_raw => {
         <v-list lines="two">
             <v-list-item v-for="thread in threads" :key="thread.id" :value="thread.url">
                 <v-list-item-title><a :href="thread.url">{{ thread.name }}</a></v-list-item-title>
-                <v-list-item-subtitle>{{ thread.author }}<br>{{ thread.date }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ thread.author }}<br>{{ thread.date_string }}</v-list-item-subtitle>
             </v-list-item>
         </v-list>
     </v-card>
