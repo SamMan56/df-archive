@@ -24,10 +24,10 @@ const subforums = subforums_raw.map(subforum_raw => {
 
 <template>
     <div class="subforums">
-        <div v-for="subforum in subforums">
-            <a :href="subforum.url">{{ subforum.name }}</a>
-            <p>{{ subforum.description }}</p>
-        </div>
+        <v-card class="mb-2 pb-4 text-left" v-for="subforum in subforums">
+            <v-card-title><a :href="subforum.url">{{ subforum.name }}</a></v-card-title>
+            <v-card-subtitle>{{ subforum.description }}</v-card-subtitle>
+        </v-card>
     </div>
 </template>
 
