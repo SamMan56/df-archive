@@ -28,6 +28,10 @@ blockquote {
     border-left: gray solid 4px;
     font-style: italic;
 }
+
+img {
+    max-width: 100%;
+}
 </style>
 
 <style scoped>
