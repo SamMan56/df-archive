@@ -9,7 +9,6 @@ export default {
 
     computed: {
         dateString() {
-            console.log(this.content);
             return `${this.date?.toLocaleTimeString()} ${this.date?.toLocaleDateString()}`
         }
     }
