@@ -8,7 +8,6 @@ const count = ref(0)
 
 <template>
   <h1>DiamondFire Forum Archives</h1>
-  <h2>Archived by SamMan_</h2>
 </template>
 
 <style scoped>

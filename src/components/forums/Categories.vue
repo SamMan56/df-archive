@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-    <h1>Categories</h1>
+    <h1>Forums</h1>
     <Suspense>
         <CategoriesView/>
         <template  #fallback>

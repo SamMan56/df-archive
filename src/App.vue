@@ -1,14 +1,12 @@
 <script lang="ts">
-import Categories from './components/home/Categories.vue';
+import Categories from './components/forums/Categories.vue';
 import Home from './components/home/Home.vue';
-import Category from './components/home/Category.vue';
 import Forum from './components/forum/Forum.vue';
 import Thread from './components/thread/Thread.vue';
 
 const routes: { [key: string]: any } = {
   "": Home,
-  "categories": Categories,
-  "category": Category,
+  "forums": Categories,
   "forum": Forum,
   "thread": Thread
 }
@@ -34,7 +32,7 @@ export default {
 
 <template>
   <a href="#/">Home</a> |
-  <a href="#/categories">Categories</a>
+  <a href="#/forums">Forums</a>
   <component :is="currentView" />
   <p>{{ currentPath }}</p>
 </template>

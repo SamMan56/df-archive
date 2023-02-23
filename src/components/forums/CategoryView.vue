@@ -1,6 +1,12 @@
 <script setup lang="ts">
-const category_id = window.location.hash.slice(2).split("/")[1]
-const res = await fetch(`https://rjpoo5tz7qm2b7zjc4qypcykpm0fcikg.lambda-url.eu-west-2.on.aws/?category_id=${category_id}`);
+import { toRefs } from 'vue';
+
+const props = defineProps({
+    category_id: Number,
+});
+const { category_id } = toRefs(props);
+
+const res = await fetch(`https://rjpoo5tz7qm2b7zjc4qypcykpm0fcikg.lambda-url.eu-west-2.on.aws/?category_id=${category_id?.value}`);
 const subforums_raw: [{
     forum_id: number,
     category_id: number,
