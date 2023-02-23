@@ -19,6 +19,7 @@ export default {
   },
   computed: {
     currentView() {
+      document.title = this.currentPath[0];
       return routes[this.currentPath[0]];
     }
   },

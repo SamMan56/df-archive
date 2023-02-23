@@ -8,6 +8,7 @@ const post =
     {
         title: post_raw.thread_subject
     };
+document.title = post.title;
 </script>
 
 <template>
