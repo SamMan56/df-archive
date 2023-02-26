@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-    <img :alt="username" :src="url" :style="style" class="head"/>
+    <v-img :style="style" :src="url" :alt="username" class="head"/>
 </template>
 
 <style scoped>
