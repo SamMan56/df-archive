@@ -13,7 +13,7 @@ export default {
   <HeadCarosel/>
   <div class="content">
     <h1 class="title">DiamondFire Forum Archives</h1>
-    <a href="#/forums"><v-btn variant="flat" color="blue">Explore</v-btn></a>
+    <a href="#/forums"><v-btn variant="flat" color="primary">Explore</v-btn></a>
   </div>
 </template>
 
