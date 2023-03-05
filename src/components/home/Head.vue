@@ -54,6 +54,6 @@ export default {
 
 <style scoped>
 .head {
-    position: absolute;
+    position: fixed;
 }
 </style>

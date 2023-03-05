@@ -35,8 +35,6 @@ export default {
 <template>
   <v-app>
     <v-app-bar v-if="currentPath[0] !== ''">
-        <!-- <a href="#/">Home</a> |
-        <a href="#/forums">Forums</a> -->
         <Nav/>
     </v-app-bar>
     <v-main>
