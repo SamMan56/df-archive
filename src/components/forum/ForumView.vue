@@ -25,3 +25,9 @@ const threads = threads_raw.map(thread_raw => {
         <v-card-subtitle>{{ thread.author }}<br>{{ thread.date_string }}<br>{{ thread.views }} Views</v-card-subtitle>
     </v-card>
 </template>
+
+<style scoped>
+a {
+    color: rgb(var(--v-theme-primary))
+}
+</style>

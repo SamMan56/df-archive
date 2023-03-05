@@ -33,4 +33,8 @@ const subforums = subforums_raw.map(subforum_raw => {
         display: flex;
         flex-direction: column;
     }
+
+    a {
+        color: rgb(var(--v-theme-primary))
+    }
 </style>
