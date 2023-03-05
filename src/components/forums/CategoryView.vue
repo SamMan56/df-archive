@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
-import { Forum } from '../../types';
+import { forums } from "./cached"
 
 const props = defineProps({
     category_id: Number,
 });
 const { category_id } = toRefs(props);
 
-const res = await fetch(`https://rjpoo5tz7qm2b7zjc4qypcykpm0fcikg.lambda-url.eu-west-2.on.aws/?category_id=${category_id?.value}`);
-const subforums_raw: [Forum] = await res.json();
+// const res = await fetch(`https://rjpoo5tz7qm2b7zjc4qypcykpm0fcikg.lambda-url.eu-west-2.on.aws/?category_id=${category_id?.value}`);
+// const subforums_raw: [Forum] = await res.json();
+const subforums_raw = forums[category_id?.value as (2425456 | 2427417) || 2425456];
 const subforums = subforums_raw.map(subforum_raw => {
     return {
         name: subforum_raw.forum_name,

@@ -16,7 +16,7 @@ export default {
     <h1>Forums</h1>
     <Suspense>
         <CategoriesView/>
-        <template  #fallback>
+        <template #fallback>
             <v-progress-circular indeterminate/>
         </template>
     </Suspense>

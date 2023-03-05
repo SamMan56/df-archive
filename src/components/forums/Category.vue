@@ -18,7 +18,7 @@ export default {
         <hr/>
         <Suspense>
             <CategoryView :category_id="category_id"/>
-            <template  #fallback>
+            <template #fallback>
                 <v-progress-circular indeterminate/>
             </template>
         </Suspense>

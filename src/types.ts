@@ -14,5 +14,11 @@ export type Forum = {
     forum_id: number,
     category_id: number,
     forum_name: string,
-    forum_description: string
+    forum_description: string,
+    forum_type: "normal"
+}
+
+export type Category = {
+    category_id: 2425456 | 2427417,
+    category_name: string
 }

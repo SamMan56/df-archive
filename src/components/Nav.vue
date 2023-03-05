@@ -1,11 +1,19 @@
 <script lang="ts">
+import { categories, forums } from "./forums/cached"; 
+
 export default {
     data() {
         return {
-            items: [
-                {title: "ee"},
-                {title: "oo"},
-            ]
+            items: categories.flatMap(category => [
+                {type: "subheader", title: category.category_name},
+                ...forums[category.category_id].map(forum => { return {
+                    title: forum.forum_name,
+                    value: forum.forum_id,
+                    props: {
+                        href: `#/forum/${forum.forum_id}`
+                    }
+                }})
+            ])
         }
     }
 }
@@ -19,18 +27,6 @@ export default {
       href="/#/"
     >
       Home
-
-      <!-- <v-menu activator="parent">
-        <v-list>
-          <v-list-item
-            v-for="(item, index) in items"
-            :key="index"
-            :value="index"
-          >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu> -->
     </v-btn>
 
     <v-btn
@@ -41,15 +37,7 @@ export default {
       Forums
 
       <v-menu activator="parent">
-        <v-list>
-          <v-list-item
-            v-for="(item, index) in items"
-            :key="index"
-            :value="index"
-          >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
+        <v-list :items="items"/>
       </v-menu>
     </v-btn>
 </template>
