@@ -15,7 +15,8 @@ const routes: { [key: string]: any } = {
 export default {
     data() {
         return {
-            currentPath: window.location.hash.slice(2).split("/")
+            currentPath: window.location.hash.slice(2).split("/"),
+            key: Math.round(Math.random() * 1000)
         };
     },
     computed: {
@@ -27,6 +28,7 @@ export default {
         window.addEventListener("hashchange", () => {
             window.scrollTo(0, 0); // always start at top of page
             this.currentPath = window.location.hash.slice(2).split("/");
+            this.key = Math.round(Math.random() * 1000); // randomise key to force a reload
         });
     },
     components: { Nav }
@@ -39,7 +41,7 @@ export default {
         <Nav/>
     </v-app-bar>
     <v-main>
-      <component :is="currentView" />
+      <component :key="key" :is="currentView" />
     </v-main>
   </v-app>
 </template>
