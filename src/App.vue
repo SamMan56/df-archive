@@ -25,6 +25,7 @@ export default {
     },
     mounted() {
         window.addEventListener("hashchange", () => {
+            window.scrollTo(0, 0); // always start at top of page
             this.currentPath = window.location.hash.slice(2).split("/");
         });
     },
