@@ -22,3 +22,8 @@ export type Category = {
     category_id: 2425456 | 2427417,
     category_name: string
 }
+
+export type ForumKey = {
+    thread_id: number,
+    forum_id: string
+}
