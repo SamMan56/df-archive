@@ -31,15 +31,17 @@ export default {
 
     methods: {
         next() {
-            console.log(this.useKeys);
             this.pages++;
+        },
+        err() {
+            console.log("oops");
         }
     }
 }
 </script>
 
 <template>
-    <Suspense>
+    <Suspense @errorCaptured="err()">
         <ForumTitle/>
         <template  #fallback>
             <div></div>
