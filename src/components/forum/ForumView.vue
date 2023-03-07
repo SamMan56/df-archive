@@ -8,9 +8,9 @@ export default {
             type: Object as PropType<ForumKey>
         }
     },
-    emits: {
-        nextKey: Number
-    },
+    
+    emits: ['nextKey'],
+
     async setup(props, context) {
         const forum_id = window.location.hash.slice(2).split("/")[1];
         const url = `https://yc7lkh7t2ut54rchjbwzvpfrg40ekowv.lambda-url.eu-west-2.on.aws/?forum_id=${forum_id}${props.lastKey ? `&last_forum_id=${props.lastKey.forum_id}&last_thread_id=${props.lastKey.thread_id}` : ""}`;
