@@ -50,5 +50,5 @@ export default {
     <!-- always start with one 'page' -->
     <ForumViewWrapper @next-key="key => keys.push(key)"/> 
     <ForumViewWrapper v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
-    <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn>
+    <!-- <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn> -->
 </template>
