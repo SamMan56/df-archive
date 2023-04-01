@@ -5,14 +5,14 @@ export default {
     props: {
         lastKey: {
             type: String
-        }
+        },
+        query: String
     },
     
     emits: ['nextKey'],
 
     async setup(props, context) {
-        const forum_id = window.location.hash.slice(2).split("/")[1];
-        const url = `https://europe-west2-df-archive.cloudfunctions.net/getThreads?forum_id=${forum_id}${props.lastKey ? `&last_key=${props.lastKey}` : ""}`;
+        const url = `${props.query}${props.lastKey ? `&last_key=${props.lastKey}` : ""}`;
         const res = await fetch(url);
         const threads_raw: [Thread] = await res.json();
         const last_thread_time = threads_raw.slice(-1)[0].time

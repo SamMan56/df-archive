@@ -1,22 +1,23 @@
 <script lang="ts">
-import ForumView from './ForumView.vue';
+import ThreadsPage from './ThreadsPage.vue';
 
 export default { 
     props: {
         lastKey: {
             type: String
-        }
+        },
+        query: String
     },
     emits: ['nextKey'],
     components: { 
-        ForumView 
+        ThreadsPage: ThreadsPage 
     } 
 }
 </script>
 
 <template>
     <Suspense>
-        <ForumView :last-key="lastKey" @next-key="next => $emit('nextKey', next)" />
+        <ThreadsPage :last-key="lastKey" :query="query" @next-key="next => $emit('nextKey', next)" />
         <template #fallback>
             <div>
                 <v-progress-circular indeterminate/>

@@ -1,48 +1,28 @@
 <script lang="ts">
 import ForumTitle from './ForumTitle.vue';
-import ForumView from './ForumView.vue';
-import ForumViewWrapper from './ForumViewWrapper.vue';
+import ThreadsViewer from '../threads_viewer/ThreadsViewer.vue';
 
 export default {
     components: {
-        ForumView,
         ForumTitle,
-        ForumViewWrapper
-    },
-
-    data() {
-        return {
-            keys: [] as string[],
-            pages: 0
-        }
+        ThreadsViewer
     },
 
     computed: {
-        useKeys() {
-            return this.keys.slice(0,this.pages);
+        getQuery() {
+            const forum_id = window.location.hash.slice(2).split("/")[1];
+            return `https://europe-west2-df-archive.cloudfunctions.net/getThreads?forum_id=${forum_id}`;
         }
     },
-
-    methods: {
-        next() {
-            this.pages++;
-        },
-        err() {
-            console.log("oops");
-        }
-    }
 }
 </script>
 
 <template>
-    <Suspense @errorCaptured="err()">
+    <Suspense>
         <ForumTitle/>
         <template  #fallback>
             <div></div>
         </template>
     </Suspense>
-    <!-- always start with one 'page' -->
-    <ForumViewWrapper @next-key="key => keys.push(key)"/> 
-    <ForumViewWrapper v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
-    <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn>
+    <ThreadsViewer :query="getQuery"/>
 </template>
