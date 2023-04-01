@@ -22,7 +22,7 @@ const posts = posts_raw.map(post_raw => {
         content: bbobHTML(post_raw.content || "", preset()),
         date: new Date(post_raw.time * 1000)
     }
-}).sort((a, b) => a.date.valueOf() - b.date.valueOf());
+});
 </script>
 
 <template>

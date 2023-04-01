@@ -1,5 +1,4 @@
 <script lang="ts">
-import { ForumKey } from '../../types';
 import ForumTitle from './ForumTitle.vue';
 import ForumView from './ForumView.vue';
 import ForumViewWrapper from './ForumViewWrapper.vue';
@@ -13,7 +12,7 @@ export default {
 
     data() {
         return {
-            keys: [] as ForumKey[],
+            keys: [] as string[],
             pages: 0
         }
     },
@@ -50,5 +49,5 @@ export default {
     <!-- always start with one 'page' -->
     <ForumViewWrapper @next-key="key => keys.push(key)"/> 
     <ForumViewWrapper v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
-    <!-- <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn> -->
+    <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn>
 </template>

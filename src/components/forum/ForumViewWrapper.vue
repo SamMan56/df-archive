@@ -1,12 +1,10 @@
 <script lang="ts">
-import { PropType } from 'vue';
-import { ForumKey } from '../../types';
 import ForumView from './ForumView.vue';
 
 export default { 
     props: {
         lastKey: {
-            type: Object as PropType<ForumKey>
+            type: String
         }
     },
     emits: ['nextKey'],

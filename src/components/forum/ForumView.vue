@@ -1,11 +1,10 @@
 <script lang="ts">
-import { PropType } from 'vue';
-import { Thread, ForumKey } from '../../types';
+import { Thread } from '../../types';
 
 export default {
     props: {
         lastKey: {
-            type: Object as PropType<ForumKey>
+            type: String
         }
     },
     
@@ -13,16 +12,14 @@ export default {
 
     async setup(props, context) {
         const forum_id = window.location.hash.slice(2).split("/")[1];
-        const url = `https://europe-west2-df-archive.cloudfunctions.net/getThreads?forum_id=${forum_id}${props.lastKey ? `&last_forum_id=${props.lastKey.forum_id}&last_thread_id=${props.lastKey.thread_id}` : ""}`;
+        const url = `https://europe-west2-df-archive.cloudfunctions.net/getThreads?forum_id=${forum_id}${props.lastKey ? `&last_key=${props.lastKey}` : ""}`;
         const res = await fetch(url);
-        const threads_raw: {
-            items: [Thread],
-            last_key: { thread_id: number }
-        } = await res.json();
+        const threads_raw: [Thread] = await res.json();
+        const last_thread_time = threads_raw.slice(-1)[0].time
 
-        context.emit("nextKey", threads_raw.last_key);
+        context.emit("nextKey", last_thread_time);
         
-        const threads = threads_raw.items.map(thread_raw => {
+        const threads = threads_raw.map(thread_raw => {
             const date = new Date(parseInt(thread_raw.time) * 1000);
             
             return {
@@ -34,7 +31,7 @@ export default {
                 date: date,
                 views: thread_raw.views
             }
-        }).sort((a, b) => b.date.valueOf() - a.date.valueOf())
+        });
         return { threads }
     }
 }
