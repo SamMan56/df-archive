@@ -6,7 +6,7 @@ export default {
         CategoryView: CategoryView
     },
     props: {
-        category_id: Number,
+        category_id: String,
         category_name: String,
     }
 }

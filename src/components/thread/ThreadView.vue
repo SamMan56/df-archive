@@ -4,20 +4,23 @@ import bbobHTML from '@bbob/html';
 import preset from '@bbob/preset-html5';
 
 const thread_id = window.location.hash.slice(2).split("/")[1]
-const res = await fetch(`https://2qlpwthhodrxe6mhp2w4xkhvfy0onjll.lambda-url.eu-west-2.on.aws/?thread_id=${thread_id}`);
+const res = await fetch(`https://europe-west2-df-archive.cloudfunctions.net/getPosts?thread_id=${thread_id}`);
 const posts_raw: {
     thread_id: string,
-    post_id: string,
-    post_time: string,
-    post_username: string,
-    post_user_id: string,
-    post_content: string
+    id: string,
+    time: number,
+    username: string,
+    user_id: string,
+    content: string,
+    admin_hidden: boolean,
+    last_edit_time: number,
+    last_edit_user: string,
 }[] = await res.json();
 const posts = posts_raw.map(post_raw => {
     return {
-        author: post_raw.post_username || post_raw.post_user_id,
-        content: bbobHTML(post_raw.post_content || "", preset()),
-        date: new Date(parseInt(post_raw.post_time) * 1000)
+        author: post_raw.username || post_raw.user_id,
+        content: bbobHTML(post_raw.content || "", preset()),
+        date: new Date(post_raw.time * 1000)
     }
 }).sort((a, b) => a.date.valueOf() - b.date.valueOf());
 </script>

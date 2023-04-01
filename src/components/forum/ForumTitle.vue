@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { Forum } from '../../types';
+import { all_forums } from '../forums/cached';
 
 const forum_id = window.location.hash.slice(2).split("/")[1]
-const res = await fetch(`https://uur2hszs56s6tcpevofalli5na0qaucv.lambda-url.eu-west-2.on.aws/?forum_id=${forum_id}`);
-const forums_raw = await res.json();
+const found_forums = all_forums.filter(forum => forum.forum_id === forum_id);
 var forum = {title: "Forum not found..."};
-if (forums_raw.length > 0) {
-    const forum_raw: Forum = forums_raw[0];
+console.log(all_forums);
+if (found_forums.length > 0) {
     forum = 
         {
-            title: forum_raw.forum_name
+            title: found_forums[0].forum_name
         };
     document.title = forum.title;
 }
