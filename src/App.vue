@@ -5,13 +5,15 @@ import Forum from './components/forum/Forum.vue';
 import Thread from './components/thread/Thread.vue';
 import Nav from './components/Nav.vue';
 import Random from './components/random/Random.vue';
+import User from './components/user/User.vue';
 
 const routes: { [key: string]: any } = {
   "": Home,
   "forums": Categories,
   "forum": Forum,
   "thread": Thread,
-  "random": Random
+  "random": Random,
+  "user": User
 }
 
 export default {
