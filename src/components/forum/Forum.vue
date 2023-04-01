@@ -23,11 +23,6 @@ export default {
         }
     },
 
-    mounted() {
-        // replaced by forum title in suspense
-        document.title = "Loading Forum..."
-    },
-
     methods: {
         next() {
             this.pages++;
