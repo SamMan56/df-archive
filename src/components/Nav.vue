@@ -40,4 +40,13 @@ export default {
         <v-list :items="items"/>
       </v-menu>
     </v-btn>
+
+    <v-btn
+      color="primary"
+      stacked
+      prepend-icon="mdi-crystal-ball"
+      href="/#/random"
+    >
+      Random
+    </v-btn>
 </template>

@@ -4,7 +4,6 @@ import { all_forums } from '../forums/cached';
 const forum_id = window.location.hash.slice(2).split("/")[1]
 const found_forums = all_forums.filter(forum => forum.forum_id === forum_id);
 var forum = {title: "Forum not found..."};
-console.log(all_forums);
 if (found_forums.length > 0) {
     forum = 
         {
