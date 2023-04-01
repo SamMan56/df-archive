@@ -3,6 +3,7 @@
 export default {
     props: {
         author: String,
+        author_id: String,
         content: String,
         date: Date
     },
@@ -10,13 +11,18 @@ export default {
     computed: {
         dateString() {
             return `${this.date?.toLocaleTimeString()} ${this.date?.toLocaleDateString()}`
+        },
+        authorURL() {
+            return `#/user/${this.author_id}`
         }
     }
 }
 </script>
 
 <template>
-<v-card :title=author :subtitle=dateString>
+<v-card>
+    <v-card-title><a :href="authorURL">{{ author }}</a></v-card-title>
+    <v-card-subtitle>{{ dateString }}</v-card-subtitle>
     <v-card-text><div class="text-left content" v-html="content"/></v-card-text>
 </v-card>
 </template>

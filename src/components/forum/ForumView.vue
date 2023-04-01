@@ -27,6 +27,7 @@ export default {
                 name: thread_raw.subject,
                 author: thread_raw.author_username || thread_raw.author_id,
                 url: `#/thread/${thread_raw.id}`,
+                author_url: `#/user/${thread_raw.author_id}`,
                 date_string: `${date?.toLocaleTimeString()} ${date?.toLocaleDateString()}`,
                 date: date,
                 views: thread_raw.views
@@ -40,7 +41,7 @@ export default {
 <template>
     <v-card class="mb-2 pb-4 text-left" v-for="thread in threads">
         <v-card-title><a :href="thread.url">{{ thread.name }}</a></v-card-title>
-        <v-card-subtitle>{{ thread.author }}<br>{{ thread.date_string }}<br>{{ thread.views }} Views</v-card-subtitle>
+        <v-card-subtitle><a :href="thread.author_url">{{ thread.author }}</a><br>{{ thread.date_string }}<br>{{ thread.views }} Views</v-card-subtitle>
     </v-card>
 </template>
 

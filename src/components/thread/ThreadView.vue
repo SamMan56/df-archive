@@ -20,14 +20,15 @@ const posts = posts_raw.map(post_raw => {
     return {
         author: post_raw.username || post_raw.user_id,
         content: bbobHTML(post_raw.content || "", preset()),
-        date: new Date(post_raw.time * 1000)
+        date: new Date(post_raw.time * 1000),
+        author_id: post_raw.user_id
     }
 });
 </script>
 
 <template>
     <div class="thread">
-        <ThreadItem v-for="post in posts" :author=post.author :content=post.content :date=post.date />
+        <ThreadItem v-for="post in posts" :author=post.author :author_id=post.author_id :content=post.content :date=post.date />
     </div>
 </template>
 
