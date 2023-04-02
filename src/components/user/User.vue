@@ -12,9 +12,33 @@ export default {
             return `https://europe-west2-df-archive.cloudfunctions.net/userThreads?user_id=${user_id}`;
         }
     },
+
+    data () {
+        return {
+            data: "threads",
+        }
+    },
 }
 </script>
 
 <template>
-    <ThreadsViewer :query="getQuery"/>
+    <v-sheet border rounded class>
+        <v-toolbar class="pl-4" flat>
+            <v-btn-toggle 
+                v-model='data'
+                color="primary"
+            >
+                <v-btn value="threads">
+                    Threads
+                </v-btn>
+
+                <v-btn value="posts">
+                    Posts
+                </v-btn>
+            </v-btn-toggle>
+        </v-toolbar>
+        <div class="pa-4">
+            <ThreadsViewer v-if="data == 'threads'" :query="getQuery"/>
+        </div>
+    </v-sheet>
 </template>
