@@ -1,10 +1,12 @@
 <script lang="ts">
 import InfiniteScroll from '../infinite_scroll/InfiniteScroll.vue';
+import UserProfile from './UserProfile.vue';
 
 export default {
     components: {
-        InfiniteScroll
-    },
+    InfiniteScroll,
+    UserProfile
+},
 
     computed: {
         threadsQuery() {
@@ -26,6 +28,14 @@ export default {
 </script>
 
 <template>
+    <Suspense>
+        <UserProfile/>
+        <template #fallback>
+            <div>
+                <v-progress-circular indeterminate/>
+            </div>
+        </template>
+    </Suspense>
     <v-sheet border rounded class>
         <v-toolbar class="pl-4" flat>
             <v-btn-toggle 

@@ -21,6 +21,13 @@ export type Thread = {
     time: string,
 }
 
+export type User = {
+    id: string,
+    posts: number,
+    threads: number,
+    username?: string
+}
+
 export type APIResponse = {
     type: "post",
     structure: "single",
@@ -39,6 +46,9 @@ export type APIResponse = {
     structure: "list",
     data: Thread[],
     last_key: number
+} | {
+    type: "user",
+    data: User
 }
 
 export type Forum = {
