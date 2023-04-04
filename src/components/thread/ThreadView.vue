@@ -1,10 +1,10 @@
 <script lang="ts">
 import InfiniteScroll from '../infinite_scroll/InfiniteScroll.vue';
-import ForumTitle from './ThreadTitle.vue';
+import ThreadTitle from './ThreadTitle.vue';
 
 export default {
     components: {
-        ForumTitle,
+        ThreadTitle,
         InfiniteScroll
     },
 
@@ -19,8 +19,8 @@ export default {
 
 <template>
     <Suspense>
-        <ForumTitle/>
-        <template  #fallback>
+        <ThreadTitle/>
+        <template #fallback>
             <div></div>
         </template>
     </Suspense>
