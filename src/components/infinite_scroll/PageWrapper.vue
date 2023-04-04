@@ -6,7 +6,8 @@ export default {
         lastKey: {
             type: String
         },
-        query: String
+        query: String,
+        itemType: String,
     },
     emits: ['nextKey'],
     components: { 
@@ -17,7 +18,7 @@ export default {
 
 <template>
     <Suspense>
-        <Page :last-key="lastKey" :query="query" @next-key="next => $emit('nextKey', next)" />
+        <Page :last-key="lastKey" :query="query" :item-type="itemType" @next-key="next => $emit('nextKey', next)" />
         <template #fallback>
             <div>
                 <v-progress-circular indeterminate/>

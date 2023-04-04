@@ -8,7 +8,8 @@ export default {
         lastKey: {
             type: String
         },
-        query: String
+        query: String,
+        itemType: String,
     },
     emits: ["nextKey"],
     async setup(props, context): Promise<{
@@ -48,7 +49,7 @@ export default {
 
 <template>
     <div v-if="type==='post'" class="thread">
-        <PostItem v-for="post in data" :post-raw="post"/>
+        <PostItem v-for="post in data" :post-raw="post" :type="itemType"/>
     </div>
     <div v-if="type==='thread'" class="forum">
         <ThreadItem v-for="thread in data" :thread-raw="thread"/>

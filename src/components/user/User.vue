@@ -7,9 +7,13 @@ export default {
     },
 
     computed: {
-        getQuery() {
+        threadsQuery() {
             const user_id = window.location.hash.slice(2).split("/")[1];
             return `https://europe-west2-df-archive.cloudfunctions.net/userThreads?user_id=${user_id}`;
+        },
+        postsQuery() {
+            const user_id = window.location.hash.slice(2).split("/")[1];
+            return `https://europe-west2-df-archive.cloudfunctions.net/userPosts?user_id=${user_id}`;
         }
     },
 
@@ -38,7 +42,8 @@ export default {
             </v-btn-toggle>
         </v-toolbar>
         <div class="pa-4">
-            <InfiniteScroll v-if="data == 'threads'" :query="getQuery" infinite/>
+            <InfiniteScroll v-if="data == 'threads'" :query="threadsQuery" infinite/>
+            <InfiniteScroll v-if="data == 'posts'" :query="postsQuery" item-type="external" infinite/>
         </div>
     </v-sheet>
 </template>

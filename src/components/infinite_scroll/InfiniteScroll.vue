@@ -27,14 +27,15 @@ export default {
 
     props: {
         query: String,
-        infinite: Boolean
+        infinite: Boolean,
+        itemType: String,
     }
 }
 </script>
 
 <template>
     <!-- always start with one 'page' -->
-    <PageWrapper :query="query" @next-key="key => keys.push(key)"/> 
-    <PageWrapper v-if="infinite" :query="query" v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
+    <PageWrapper :query="query" :item-type="itemType" @next-key="key => keys.push(key)"/> 
+    <PageWrapper v-if="infinite" :query="query" :item-type="itemType" v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
     <v-btn v-if="infinite" variant="flat" color="primary" @click="next()">Load More</v-btn>
 </template>
