@@ -30,7 +30,7 @@ export default {
 
 <template>
 <v-card>
-    <v-toolbar v-if="type==='external'" flat collapse>
+    <v-toolbar v-if="type==='external'" collapse>
         <a :href="post?.threadUrl">Jump to thread...</a>
     </v-toolbar>
     <v-card-title><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
