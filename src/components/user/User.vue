@@ -1,9 +1,9 @@
 <script lang="ts">
-import ThreadsViewer from '../threads_viewer/ThreadsViewer.vue';
+import InfiniteScroll from '../infinite_scroll/InfiniteScroll.vue';
 
 export default {
     components: {
-        ThreadsViewer
+        InfiniteScroll
     },
 
     computed: {
@@ -38,7 +38,7 @@ export default {
             </v-btn-toggle>
         </v-toolbar>
         <div class="pa-4">
-            <ThreadsViewer v-if="data == 'threads'" :query="getQuery"/>
+            <InfiniteScroll v-if="data == 'threads'" :query="getQuery" infinite/>
         </div>
     </v-sheet>
 </template>

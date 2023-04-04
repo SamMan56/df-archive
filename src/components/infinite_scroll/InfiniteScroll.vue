@@ -1,9 +1,9 @@
 <script lang="ts">
-import ThreadsPageWrapper from './ThreadsPageWrapper.vue';
+import PageWrapper from './PageWrapper.vue';
 
 export default {
     components: {
-        ThreadsPageWrapper: ThreadsPageWrapper
+        PageWrapper: PageWrapper
     },
 
     data() {
@@ -26,14 +26,15 @@ export default {
     },
 
     props: {
-        query: String
+        query: String,
+        infinite: Boolean
     }
 }
 </script>
 
 <template>
     <!-- always start with one 'page' -->
-    <ThreadsPageWrapper :query="query" @next-key="key => keys.push(key)"/> 
-    <ThreadsPageWrapper :query="query" v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
-    <v-btn variant="flat" color="primary" @click="next()">Load More</v-btn>
+    <PageWrapper :query="query" @next-key="key => keys.push(key)"/> 
+    <PageWrapper v-if="infinite" :query="query" v-for="(key, index) in useKeys" :key="index" :last-key="key" @next-key="key => keys.push(key)"/>
+    <v-btn v-if="infinite" variant="flat" color="primary" @click="next()">Load More</v-btn>
 </template>

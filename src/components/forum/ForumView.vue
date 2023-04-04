@@ -1,11 +1,11 @@
 <script lang="ts">
+import InfiniteScroll from '../infinite_scroll/InfiniteScroll.vue';
 import ForumTitle from './ForumTitle.vue';
-import ThreadsViewer from '../threads_viewer/ThreadsViewer.vue';
 
 export default {
     components: {
         ForumTitle,
-        ThreadsViewer
+        InfiniteScroll
     },
 
     computed: {
@@ -24,5 +24,5 @@ export default {
             <div></div>
         </template>
     </Suspense>
-    <ThreadsViewer :query="getQuery"/>
+    <InfiniteScroll :query="getQuery" infinite/>
 </template>

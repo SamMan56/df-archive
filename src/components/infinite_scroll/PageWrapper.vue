@@ -1,5 +1,5 @@
 <script lang="ts">
-import ThreadsPage from './ThreadsPage.vue';
+import Page from './Page.vue';
 
 export default { 
     props: {
@@ -10,14 +10,14 @@ export default {
     },
     emits: ['nextKey'],
     components: { 
-        ThreadsPage: ThreadsPage 
+        Page: Page 
     } 
 }
 </script>
 
 <template>
     <Suspense>
-        <ThreadsPage :last-key="lastKey" :query="query" @next-key="next => $emit('nextKey', next)" />
+        <Page :last-key="lastKey" :query="query" @next-key="next => $emit('nextKey', next)" />
         <template #fallback>
             <div>
                 <v-progress-circular indeterminate/>

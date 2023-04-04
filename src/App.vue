@@ -1,8 +1,8 @@
 <script lang="ts">
 import Categories from './components/forums/Categories.vue';
 import Home from './components/home/Home.vue';
-import Forum from './components/forum/Forum.vue';
-import Thread from './components/thread/Thread.vue';
+import ForumView from './components/forum/ForumView.vue';
+import ThreadView from './components/thread/ThreadView.vue';
 import Nav from './components/Nav.vue';
 import Random from './components/random/Random.vue';
 import User from './components/user/User.vue';
@@ -10,8 +10,8 @@ import User from './components/user/User.vue';
 const routes: { [key: string]: any } = {
   "": Home,
   "forums": Categories,
-  "forum": Forum,
-  "thread": Thread,
+  "forum": ForumView,
+  "thread": ThreadView,
   "random": Random,
   "user": User
 }
