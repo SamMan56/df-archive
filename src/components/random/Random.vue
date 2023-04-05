@@ -10,7 +10,7 @@ export default {
             res.json().then(json_raw => {
                 const json: APIResponse = json_raw;
 
-                if (json.structure === "single" && json.type === "thread") {
+                if (json.type === "thread" && json.structure === "single") {
                     window.location.href = `#/thread/${json.data.id}`
                 } else { // go to home instead
                     window.location.href = `#/`;

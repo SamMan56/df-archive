@@ -25,7 +25,7 @@ export default {
         const res = await fetch(url);
         const json: APIResponse = await res.json();
 
-        if (json.structure === "single")
+        if (json.type==="user" || json.structure === "single")
             return { type: "error" };
 
         if (json.type === "thread") {
