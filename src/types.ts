@@ -1,3 +1,9 @@
+export type Vote = {
+    user_id: string,
+    username: string,
+    votetype_id: string
+}
+
 export type Post = {
     id: string,
     content: string,
@@ -5,8 +11,9 @@ export type Post = {
     user_id: string,
     username: string,
     last_edit_time: number,
-    last_edit_user: string
-    thread_id: string
+    last_edit_user: string,
+    thread_id: string,
+    votes: Vote[]
 }
 
 export type Thread = {

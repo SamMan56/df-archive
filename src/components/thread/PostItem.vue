@@ -1,18 +1,24 @@
 <script lang="ts">
 import { PropType } from 'vue';
-import { Post } from '../../types';
+import { Post, Vote } from '../../types';
 import bbobHTML from '@bbob/html';
 import preset from '@bbob/preset-html5';
+import ReactIcon from './ReactIcon.vue';
 
 export default {
     props: {
         postRaw: Object as PropType<Post>,
         type: String,
     },
-
     computed: {
         post() {
             if (this.postRaw !== undefined) {
+                const votes = this.postRaw.votes
+                    .sort((a, b) => parseInt(b.votetype_id) - parseInt(a.votetype_id))
+                    .map(vote => {return {
+                        ...vote,
+                        user_url: `#/user/${vote.user_id}`
+                    }});
                 const date = new Date(this.postRaw.time * 1000);
                 return {
                     author: this.postRaw.username || this.postRaw.user_id,
@@ -20,11 +26,15 @@ export default {
                     dateString: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
                     authorId: this.postRaw.user_id,
                     authorUrl: `#/user/${this.postRaw.user_id}`,
-                    threadUrl: `#/thread/${this.postRaw.thread_id}`
-                }
-            } else return undefined;
+                    threadUrl: `#/thread/${this.postRaw.thread_id}`,
+                    votes: votes
+                };
+            }
+            else
+                return undefined;
         }
-    }
+    },
+    components: { ReactIcon }
 }
 </script>
 
@@ -35,7 +45,19 @@ export default {
     </v-toolbar>
     <v-card-title><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
     <v-card-subtitle>{{ post?.dateString }}</v-card-subtitle>
-    <v-card-text><div class="text-left content" v-html="post?.content"/></v-card-text>
+    <v-card-text>
+        <div class="text-left content" v-html="post?.content"/>
+        <v-chip 
+            v-for="vote of post?.votes"
+            :ripple="false"
+            class="ma-2"
+        >
+            <template v-slot:prepend>
+                <ReactIcon :id="vote.votetype_id"/>
+            </template>
+            <a :href="vote.user_url">{{ vote.username }}</a>
+        </v-chip>
+    </v-card-text>
 </v-card>
 </template>
 
