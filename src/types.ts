@@ -23,10 +23,11 @@ export type Thread = {
     category_id: string,
     subject: string,
     views: string,
-    status: string[],
     author_id: string,
     author_username: string,
     time: string,
+    is_locked: boolean,
+    is_pinned: boolean,
 }
 
 export type User = {
