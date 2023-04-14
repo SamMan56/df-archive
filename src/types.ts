@@ -13,6 +13,7 @@ export type Post = {
     last_edit_time: number,
     last_edit_user: string,
     thread_id: string,
+    thread_name: string,
     votes: Vote[]
 }
 

@@ -27,6 +27,7 @@ export default {
                     authorId: this.postRaw.user_id,
                     authorUrl: `#/user/${this.postRaw.user_id}`,
                     threadUrl: `#/thread/${this.postRaw.thread_id}`,
+                    threadTitle: this.postRaw.thread_name,
                     votes: votes
                 };
             }
@@ -40,8 +41,10 @@ export default {
 
 <template>
 <v-card>
-    <v-toolbar v-if="type==='external'" collapse>
-        <a :href="post?.threadUrl">Jump to thread...</a>
+    <v-toolbar v-if="type==='external'">
+        <template v-slot:title>
+            <a :href="post?.threadUrl">{{ post?.threadTitle }}</a>
+        </template>
     </v-toolbar>
     <v-card-title><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
     <v-card-subtitle>{{ post?.dateString }}</v-card-subtitle>
