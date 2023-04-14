@@ -32,6 +32,8 @@ export type User = {
     id: string,
     posts: number,
     threads: number,
+    votes_given: number,
+    votes_received: number,
     username?: string
 }
 

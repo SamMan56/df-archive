@@ -16,4 +16,6 @@ if (json.type === "user") {
     <h1>{{ user?.username ?? user?.id }}</h1>
     <p>Threads: {{ user?.threads }}</p>
     <p>Posts: {{ user?.posts }}</p>
+    <p>Votes Given: {{ user?.votes_given }}</p>
+    <p>Votes Received: {{ user?.votes_received }}</p>
 </template>
