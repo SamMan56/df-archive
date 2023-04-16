@@ -14,7 +14,8 @@ export type Post = {
     last_edit_user: string,
     thread_id: string,
     thread_name: string,
-    votes: Vote[]
+    votes: Vote[],
+    admin_hidden: boolean
 }
 
 export type Thread = {

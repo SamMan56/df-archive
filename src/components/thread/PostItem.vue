@@ -33,6 +33,9 @@ export default {
             }
             else
                 return undefined;
+        },
+        is_hidden() {
+            return this.postRaw?.admin_hidden
         }
     },
     components: { ReactIcon }
@@ -40,7 +43,9 @@ export default {
 </script>
 
 <template>
-<v-card>
+<v-card
+    :color="is_hidden ? 'red-lighten-5' : ''"
+>
     <v-toolbar v-if="type==='external'">
         <template v-slot:title>
             <a :href="post?.threadUrl">{{ post?.threadTitle }}</a>
@@ -48,6 +53,7 @@ export default {
     </v-toolbar>
     <v-card-title><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
     <v-card-subtitle>{{ post?.dateString }}</v-card-subtitle>
+    <v-chip v-if="is_hidden">Hidden by Admins</v-chip>
     <v-card-text>
         <div class="text-left content" v-html="post?.content"/>
         <v-chip 
