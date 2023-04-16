@@ -4,7 +4,7 @@ import Page from './Page.vue';
 export default { 
     props: {
         lastKey: {
-            type: String
+            type: Number
         },
         query: String,
         itemType: String,

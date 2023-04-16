@@ -6,7 +6,7 @@ import ThreadItem from '../forum/Thread.vue';
 export default {
     props: {
         lastKey: {
-            type: String
+            type: Number
         },
         query: String,
         itemType: String,

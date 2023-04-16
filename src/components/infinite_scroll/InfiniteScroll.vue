@@ -8,7 +8,7 @@ export default {
 
     data() {
         return {
-            keys: [] as string[],
+            keys: [] as number[],
             pages: 0,
             finished: false
         }
