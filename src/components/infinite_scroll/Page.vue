@@ -38,7 +38,7 @@ export default {
         }
 
         if (json.type === "post") {
-            if ("nextKey" in json) {
+            if ("last_key" in json) {
                 context.emit("nextKey", json.last_key);
             }
             return { data: json.data, type: "post" };
