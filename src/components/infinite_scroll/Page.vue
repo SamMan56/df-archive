@@ -11,7 +11,7 @@ export default {
         query: String,
         itemType: String,
     },
-    emits: ["nextKey"],
+    emits: ["nextKey", "empty"],
     async setup(props, context): Promise<{
         type: "error"
     } | {
@@ -27,6 +27,10 @@ export default {
 
         if (json.type==="user" || json.structure === "single")
             return { type: "error" };
+
+        if (json.structure==="list" && json.data.length == 0) {
+            context.emit("empty");
+        }
 
         if (json.type === "thread") {
             context.emit("nextKey", json.last_key);

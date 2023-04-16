@@ -9,7 +9,7 @@ export default {
         query: String,
         itemType: String,
     },
-    emits: ['nextKey'],
+    emits: ['nextKey', 'empty'],
     components: { 
         Page: Page 
     } 
@@ -18,7 +18,7 @@ export default {
 
 <template>
     <Suspense>
-        <Page :last-key="lastKey" :query="query" :item-type="itemType" @next-key="next => $emit('nextKey', next)" />
+        <Page :last-key="lastKey" :query="query" :item-type="itemType" @next-key="next => $emit('nextKey', next)" @empty="_ => $emit('empty')"/>
         <template #fallback>
             <div>
                 <v-progress-circular indeterminate/>
