@@ -6,7 +6,7 @@ const res = await fetch(`https://europe-west2-df-archive.cloudfunctions.net/getU
 const json: APIResponse = await res.json();
 
 var user: User | undefined = undefined
-if (json.type === "user") {
+if (json.type === "user" && json.structure === "single") {
     user = json.data
     document.title = `${json.data.username ?? json.data.id}'s profile`
 }
