@@ -49,4 +49,13 @@ export default {
     >
       Random
     </v-btn>
+
+<v-btn
+  color="primary"
+  stacked
+  prepend-icon="mdi-account-group"
+  href="/#/users"
+>
+  Top Users
+</v-btn>
 </template>
