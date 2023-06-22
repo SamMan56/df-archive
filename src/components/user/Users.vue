@@ -4,19 +4,19 @@ import UserProfile from './UserProfile.vue';
 
 export default {
     components: {
-    InfiniteScroll,
-    UserProfile
-},
+        InfiniteScroll,
+        UserProfile
+    },
+
+    data() {
+        return {
+            category: "posts",
+        }
+    },
 
     computed: {
         query() {
             return `https://europe-west2-df-archive.cloudfunctions.net/topUsers?category=${this.category}`;
-        }
-    },
-
-    data () {
-        return {
-            category: "posts",
         }
     },
 }
