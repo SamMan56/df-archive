@@ -6,6 +6,7 @@ import ThreadView from './components/thread/ThreadView.vue';
 import Nav from './components/Nav.vue';
 import Random from './components/random/Random.vue';
 import User from './components/user/User.vue';
+import Users from './components/user/Users.vue';
 
 const routes: { [key: string]: any } = {
   "": Home,
@@ -13,7 +14,8 @@ const routes: { [key: string]: any } = {
   "forum": ForumView,
   "thread": ThreadView,
   "random": Random,
-  "user": User
+  "user": User,
+  "users": Users,
 }
 
 export default {

@@ -1,8 +1,9 @@
 <script lang="ts">
-import { APIResponse, Post, Thread } from '../../types';
+import { APIResponse, Post, Thread, User } from '../../types';
 import PostItem from '../thread/PostItem.vue';
 import ThreadItem from '../forum/Thread.vue';
 
+import UserItem from '../user/UserItem.vue';
 export default {
     props: {
         lastKey: {
@@ -17,15 +18,18 @@ export default {
     } | {
         type: "thread",
         data: Thread[]
-    }| {
+    } | {
         type: "post",
         data: Post[]
+    } | {
+        type: "user",
+        data: User[]
     }> {
         const url = `${props.query}${props.lastKey ? `&last_key=${props.lastKey}` : ""}`;
         const res = await fetch(url);
         const json: APIResponse = await res.json();
 
-        if (json.type==="user" || json.structure === "single")
+        if (json.structure === "single")
             return { type: "error" };
 
         if (json.structure==="list" && json.data.length == 0) {
@@ -44,10 +48,17 @@ export default {
             return { data: json.data, type: "post" };
         }
 
+        if (json.type === "user") {
+            if ("last_key" in json) {
+                context.emit("nextKey", json.last_key);
+            }
+            return { data: json.data, type: "user" };
+        }
+
         return { type: "error" };
     },
 
-    components: { PostItem, ThreadItem }
+    components: { PostItem, ThreadItem, UserItem }
 }
 </script>
 
@@ -57,6 +68,9 @@ export default {
     </div>
     <div v-if="type==='thread'" class="forum">
         <ThreadItem v-for="thread in data" :thread-raw="thread"/>
+    </div>
+    <div v-if="type==='user'" class="user">
+        <UserItem v-for="user in data" :user-raw="user"/>
     </div>
 </template>
 

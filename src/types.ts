@@ -60,7 +60,13 @@ export type APIResponse = {
     last_key: number
 } | {
     type: "user",
+    structure: "single",
     data: User
+} | {
+    type: "user",
+    structure: "list",
+    data: User[],
+    last_key?: number
 }
 
 export type Forum = {
