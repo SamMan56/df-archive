@@ -12,7 +12,11 @@ export default {
             if (this.userRaw !== undefined) {
                 return {
                     author: this.userRaw.username || this.userRaw.id,
-                    userUrl: `#/user/${this.userRaw.id}`
+                    userUrl: `#/user/${this.userRaw.id}`,
+                    posts: this.userRaw.posts,
+                    threads: this.userRaw.threads,
+                    votes_given: this.userRaw.votes_given,
+                    votes_received: this.userRaw.votes_received
                 };
             }
             else
@@ -26,6 +30,10 @@ export default {
 <v-card>
     <v-card-title><a :href="user?.userUrl">{{ user?.author }}</a></v-card-title>
     <v-card-text>
+        Posts: {{ user?.posts }} <br/>
+        Threads: {{ user?.threads }} <br/>
+        Votes Given: {{ user?.votes_given }} <br/>
+        Votes Received: {{ user?.votes_received }}
     </v-card-text>
 </v-card>
 </template>
