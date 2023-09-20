@@ -20,42 +20,51 @@ export default {
 </script>
 
 <template>
-    <v-btn
-      color="primary"
-      stacked
-      prepend-icon="custom:logo"
-      href="/#/"
-    >
-      Home
-    </v-btn>
+  <v-btn
+    color="primary"
+    stacked
+    prepend-icon="custom:logo"
+    href="/#/"
+  >
+    Home
+  </v-btn>
 
-    <v-btn
-      color="primary"
-      stacked
-      prepend-icon="mdi-forum"
-    >
-      Forums
+  <v-btn
+    color="primary"
+    stacked
+    prepend-icon="mdi-forum"
+  >
+    Forums
 
-      <v-menu activator="parent">
-        <v-list :items="items"/>
-      </v-menu>
-    </v-btn>
+    <v-menu activator="parent">
+      <v-list :items="items"/>
+    </v-menu>
+  </v-btn>
 
-    <v-btn
-      color="primary"
-      stacked
-      prepend-icon="mdi-crystal-ball"
-      href="/#/random"
-    >
-      Random
-    </v-btn>
+  <v-btn
+    color="primary"
+    stacked
+    prepend-icon="mdi-crystal-ball"
+    href="/#/random"
+  >
+    Random
+  </v-btn>
+
+  <v-btn
+    color="primary"
+    stacked
+    prepend-icon="mdi-account-group"
+    href="/#/users"
+  >
+    Top Users
+  </v-btn>
 
 <v-btn
   color="primary"
   stacked
-  prepend-icon="mdi-account-group"
-  href="/#/users"
+  prepend-icon="mdi-swap-horizontal"
+  href="/#/convert"
 >
-  Top Users
+  Convert URL
 </v-btn>
 </template>

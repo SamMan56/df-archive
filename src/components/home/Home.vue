@@ -13,7 +13,8 @@ export default {
   <HeadCarosel/>
   <div class="content">
     <h1 class="title">DiamondFire Forum Archives</h1>
-    <a href="#/forums"><v-btn variant="flat" color="primary">Explore</v-btn></a>
+    <div><a href="#/forums"><v-btn variant="flat" color="primary">Explore</v-btn></a></div>
+    <div><a href="#/convert"><v-btn variant="flat" color="primary">Convert URL</v-btn></a></div>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
   height: 100%;
 }
 </style>

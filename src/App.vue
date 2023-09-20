@@ -7,6 +7,7 @@ import Nav from './components/Nav.vue';
 import Random from './components/random/Random.vue';
 import User from './components/user/User.vue';
 import Users from './components/user/Users.vue';
+import Convert from './components/convert/Convert.vue';
 
 const routes: { [key: string]: any } = {
   "": Home,
@@ -16,6 +17,7 @@ const routes: { [key: string]: any } = {
   "random": Random,
   "user": User,
   "users": Users,
+  "convert": Convert,
 }
 
 export default {
