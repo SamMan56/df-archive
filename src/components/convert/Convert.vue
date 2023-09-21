@@ -1,6 +1,6 @@
 <script lang="ts">
 import { SubmitEventPromise } from 'vuetify/lib/framework.mjs';
-import { convertUrl } from './convert';
+import { convertUrl, urlRegex } from './convert';
 
 export default {
     mounted() {
@@ -11,7 +11,6 @@ export default {
       url: "",
       urlRules: [
         (value: string) => {
-          const urlRegex = /https?:\/\/(?:www\.)?mcdiamondfire(?:\.enjin)?\.com\/forum\/m\/\d+\/viewthread\/\d+-.*/
           if (!value.match(urlRegex)) {
             return "Couldn't find a Thread ID in this url!"
           }
