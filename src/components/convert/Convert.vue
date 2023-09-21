@@ -1,5 +1,6 @@
 <script lang="ts">
 import { SubmitEventPromise } from 'vuetify/lib/framework.mjs';
+import { convertUrl } from './convert';
 
 export default {
     mounted() {
@@ -25,10 +26,9 @@ export default {
         const submit = await submitEventPromise
 
         if (submit.valid) {
-          const urlRegex = /https?:\/\/(?:www\.)?mcdiamondfire(?:\.enjin)?\.com\/forum\/m\/\d+\/viewthread\/(\d+)-.*/
-          const matches = this.url.match(urlRegex);
-          if (matches && matches.length >= 2) {
-            location.href = `#/thread/${matches[1]}`
+          const newUrl = convertUrl(this.url);
+          if (newUrl) {
+            location.href = newUrl;
           }
         }
         
