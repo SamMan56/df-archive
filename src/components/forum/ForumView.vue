@@ -9,9 +9,13 @@ export default {
     },
 
     computed: {
-        getQuery() {
+        getThreadsQuery() {
             const forum_id = window.location.hash.slice(2).split("/")[1];
             return `https://europe-west2-df-archive.cloudfunctions.net/getThreads?forum_id=${forum_id}`;
+        },
+        getPinnedQuery() {
+            const forum_id = window.location.hash.slice(2).split("/")[1];
+            return `https://europe-west2-df-archive.cloudfunctions.net/getPinned?forum_id=${forum_id}`;
         }
     },
 }
@@ -24,5 +28,7 @@ export default {
             <div></div>
         </template>
     </Suspense>
-    <InfiniteScroll :query="getQuery" infinite/>
+    <InfiniteScroll :query="getPinnedQuery"/>
+    <br><br>
+    <InfiniteScroll :query="getThreadsQuery" infinite/>
 </template>

@@ -57,7 +57,7 @@ export type APIResponse = {
     type: "thread",
     structure: "list",
     data: Thread[],
-    last_key: number
+    last_key?: number
 } | {
     type: "user",
     structure: "single",

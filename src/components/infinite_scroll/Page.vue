@@ -37,7 +37,9 @@ export default {
         }
 
         if (json.type === "thread") {
-            context.emit("nextKey", json.last_key);
+            if ("last_key" in json) {
+                context.emit("nextKey", json.last_key);
+            }
             return { data: json.data, type: "thread" };
         }
 
