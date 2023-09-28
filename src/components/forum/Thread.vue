@@ -18,7 +18,9 @@ export default {
                     url: `#/thread/${this.threadRaw.id}`,
                     author_url: `#/user/${this.threadRaw.author_id}`,
                     date_string: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
-                    views: this.threadRaw.views
+                    views: this.threadRaw.views,
+                    is_pinned: this.threadRaw.is_pinned,
+                    is_locked: this.threadRaw.is_locked,
                 }
             } else return undefined;
         }
@@ -28,7 +30,11 @@ export default {
 
 <template>
     <v-card class="mb-2 pb-4 text-left">
-        <v-card-title><a :href="thread?.url">{{ thread?.name }}</a></v-card-title>
+        <v-card-title>
+            <v-icon v-if="thread?.is_locked" icon="mdi-lock" class="mr-1" size="x-small"></v-icon>
+            <v-icon v-if="thread?.is_pinned" icon="mdi-pin" class="mr-1" size="x-small"></v-icon>
+            <a :href="thread?.url">{{ thread?.name }}</a>
+        </v-card-title>
         <v-card-subtitle><a :href="thread?.author_url">{{ thread?.author }}</a><br>{{ thread?.date_string }}<br>{{ thread?.views }} Views</v-card-subtitle>
     </v-card>
 </template>
