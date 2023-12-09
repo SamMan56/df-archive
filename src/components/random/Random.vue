@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-    <v-progress-circular indeterminate/>
+    <v-sheet class="d-flex justify-center pa-4"><v-progress-circular indeterminate/></v-sheet>
 </template>
 
 <style scoped>
