@@ -11,9 +11,9 @@ export default {
                 const json: APIResponse = json_raw;
 
                 if (json.type === "thread" && json.structure === "single") {
-                    window.location.href = `#/thread/${json.data.id}`
+                    window.location.replace(`#/thread/${json.data.id}`)
                 } else { // go to home instead
-                    window.location.href = `#/`;
+                    window.location.replace(`#/`);
                 }
             })
         })
