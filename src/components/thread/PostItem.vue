@@ -3,7 +3,23 @@ import { PropType } from 'vue';
 import { Post, Vote } from '../../types';
 import bbobHTML from '@bbob/html';
 import preset from '@bbob/preset-html5';
+import { TagNode } from '@bbob/plugin-helper';
 import ReactIcon from './ReactIcon.vue';
+
+const myPreset = preset.extend((tags) => ({
+    ...tags,
+    url: (node) => {
+        let attrs = node.attrs;
+        delete attrs["target"];
+
+        const urlKey = Object.keys(attrs)[0];
+        return (new TagNode("a", {
+            ...node.attrs,
+            href: urlKey
+        }, node.content || ""));
+    }
+}))
+
 
 export default {
     props: {
@@ -22,7 +38,7 @@ export default {
                 const date = new Date(this.postRaw.time * 1000);
                 return {
                     author: this.postRaw.username || this.postRaw.user_id,
-                    content: bbobHTML(this.postRaw.content || "", preset()),
+                    content: bbobHTML(this.postRaw.content || "", myPreset()),
                     dateString: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
                     authorId: this.postRaw.user_id,
                     authorUrl: `#/user/${this.postRaw.user_id}`,
