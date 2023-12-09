@@ -51,8 +51,8 @@ export default {
             <a :href="post?.threadUrl">{{ post?.threadTitle }}</a>
         </template>
     </v-toolbar>
-    <v-card-title><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
-    <v-card-subtitle>{{ post?.dateString }}</v-card-subtitle>
+    <v-card-title class="text-center"><a :href="post?.authorUrl">{{ post?.author }}</a></v-card-title>
+    <v-card-subtitle class="text-center">{{ post?.dateString }}</v-card-subtitle>
     <v-chip v-if="is_hidden">Hidden by Admins</v-chip>
     <v-card-text>
         <div class="text-left content" v-html="post?.content"/>

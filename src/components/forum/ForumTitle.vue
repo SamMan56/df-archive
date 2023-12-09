@@ -14,5 +14,5 @@ if (found_forums.length > 0) {
 </script>
 
 <template>
-    <h1>{{ forum.title }}</h1>
+    <h1 class="text-center">{{ forum.title }}</h1>
 </template>

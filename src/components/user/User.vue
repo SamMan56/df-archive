@@ -28,6 +28,10 @@ export default {
 </script>
 
 <template>
+    <v-container fluid>
+        <v-row>
+            <v-col/>
+            <v-col cols="12" md="10" xl="8">
     <Suspense>
         <UserProfile/>
         <template #fallback>
@@ -56,4 +60,8 @@ export default {
             <InfiniteScroll v-if="data == 'posts'" :query="postsQuery" item-type="external" infinite/>
         </div>
     </v-sheet>
+            </v-col>
+            <v-col/>
+            </v-row>
+            </v-container>
 </template>

@@ -22,13 +22,21 @@ export default {
 </script>
 
 <template>
-    <Suspense>
-        <ForumTitle/>
-        <template  #fallback>
-            <div></div>
-        </template>
-    </Suspense>
-    <InfiniteScroll :query="getPinnedQuery"/>
-    <br><br>
-    <InfiniteScroll :query="getThreadsQuery" infinite/>
+    <v-container fluid>
+        <v-row>
+            <v-col/>
+            <v-col cols="12" md="10" xl="8">
+                <Suspense>
+                    <ForumTitle/>
+                    <template #fallback>
+                        <div></div>
+                    </template>
+                </Suspense>
+                <InfiniteScroll :query="getPinnedQuery"/>
+                <br><br>
+                <InfiniteScroll :query="getThreadsQuery" infinite/>
+            </v-col>
+            <v-col/>
+        </v-row>
+    </v-container>
 </template>

@@ -19,7 +19,9 @@ if (json.type === "thread" && json.structure === "single") {
 </script>
 
 <template>
-    <h1>{{ post.title }}</h1>
-    <v-chip v-if="post.locked" prepend-icon="mdi-lock" class="ma-2">Locked</v-chip>
-    <v-chip v-if="post.pinned" prepend-icon="mdi-pin" class="ma-2">Pinned</v-chip>
+    <h1 class="text-center">{{ post.title }}</h1>
+    <div class="d-flex justify-center">
+        <v-chip v-if="post.locked" prepend-icon="mdi-lock" class="ma-2">Locked</v-chip>
+        <v-chip v-if="post.pinned" prepend-icon="mdi-pin" class="ma-2">Pinned</v-chip>
+    </div>
 </template>

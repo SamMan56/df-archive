@@ -12,9 +12,9 @@ export default {
 <template>
   <HeadCarosel/>
   <div class="content">
-    <h1 class="title">DiamondFire Forum Archives</h1>
-    <div><a href="#/forums"><v-btn variant="flat" color="primary">Explore</v-btn></a></div>
-    <div><a href="#/convert"><v-btn variant="flat" color="primary">Convert URL</v-btn></a></div>
+    <h1 class="title text-center">DiamondFire Forum Archives</h1>
+    <div class="text-center"><a href="#/forums"><v-btn variant="flat" color="primary">Explore</v-btn></a></div>
+    <div class="text-center"><a href="#/convert"><v-btn variant="flat" color="primary">Convert URL</v-btn></a></div>
   </div>
 </template>
 

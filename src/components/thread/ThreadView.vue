@@ -18,11 +18,19 @@ export default {
 </script>
 
 <template>
-    <Suspense>
-        <ThreadTitle/>
-        <template #fallback>
-            <div></div>
-        </template>
-    </Suspense>
-    <InfiniteScroll :query="getQuery"/>
+    <v-container fluid>
+        <v-row>
+            <v-col/>
+            <v-col cols="12" sm="10" md="8" xl="6">
+                <Suspense>
+                    <ThreadTitle/>
+                    <template #fallback>
+                        <div></div>
+                    </template>
+                </Suspense>
+                <InfiniteScroll :query="getQuery"/>
+            </v-col>
+            <v-col/>
+        </v-row>
+    </v-container>
 </template>

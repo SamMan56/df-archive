@@ -38,23 +38,24 @@ export default {
 </script>
 
 <template>
-  <v-form class="form" @submit="submit">
-    <h1>Convert Existing URL</h1>
-    <p>Paste an existing <em>http://www.mcdiamondfire.com/forum</em> link to view in the archive.</p>
-    <v-text-field
-      v-model="url"
-      :rules = "urlRules"
-      label = "URL"
-      placeholder = "http://www.mcdiamondfire.com/forum/m/xxxxxxxx/viewthread/xxxxxxxx-thread-title"
-    />
-    <v-btn type="submit" block>Submit</v-btn>
-  </v-form>
+  <v-container fluid>
+      <v-row>
+          <v-col/>
+          <v-col cols="12" sm="9" md="6" xl="4">
+            <v-form class="form" @submit="submit">
+              <h1 class="text-center">Convert Existing URL</h1>
+              <br>
+              <p>Paste an existing <em>http://www.mcdiamondfire.com/forum</em> link to view in the archive.</p>
+              <v-text-field
+                v-model="url"
+                :rules = "urlRules"
+                label = "URL"
+                placeholder = "http://www.mcdiamondfire.com/forum/m/xxxxxxxx/viewthread/xxxxxxxx-thread-title"
+              />
+              <v-btn type="submit" block>Submit</v-btn>
+            </v-form>
+          </v-col>
+          <v-col/>
+      </v-row>
+  </v-container>
 </template>
-
-<style scoped>
-.form {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-}
-</style>
