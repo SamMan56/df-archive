@@ -24,7 +24,3 @@ export default {
 <template>
     <v-sheet class="d-flex justify-center pa-4"><v-progress-circular indeterminate/></v-sheet>
 </template>
-
-<style scoped>
-
-</style>
