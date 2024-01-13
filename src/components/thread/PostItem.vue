@@ -17,6 +17,18 @@ const myPreset = preset.extend((tags) => ({
             ...node.attrs,
             href: urlKey
         }, node.content || ""));
+    },
+    youtube: (node) => {
+        console.log(node);
+        
+        if (node.content === null || node.content.length < 1 || typeof node.content[0] !== "string") return node;
+
+        const url = `https://youtu.be/${node.content[0]}`;
+        
+        return (new TagNode("a", {
+            ...node.attrs,
+            href: url
+        }, url));
     }
 }))
 
