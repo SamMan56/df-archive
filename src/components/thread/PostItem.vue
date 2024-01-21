@@ -5,6 +5,7 @@ import bbobHTML from '@bbob/html';
 import preset from '@bbob/preset-html5';
 import { TagNode } from '@bbob/plugin-helper';
 import ReactIcon from './ReactIcon.vue';
+import { convertUrl } from '../convert/convert';
 
 const myPreset = preset.extend((tags) => ({
     ...tags,
@@ -13,9 +14,11 @@ const myPreset = preset.extend((tags) => ({
         delete attrs["target"];
 
         const urlKey = Object.keys(attrs)[0];
+        // auto converts old forum links
+        const convertedUrl = convertUrl(urlKey);
         return (new TagNode("a", {
             ...node.attrs,
-            href: urlKey
+            href: convertedUrl ?? urlKey
         }, node.content || ""));
     },
     youtube: (node) => {
